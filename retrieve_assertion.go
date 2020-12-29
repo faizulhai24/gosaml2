@@ -49,8 +49,10 @@ func (sp *SAMLServiceProvider) RetrieveAssertionInfo(encodedResponse string) (*A
 	assertionInfo := &AssertionInfo{
 		Values: make(Values),
 	}
-
+	fmt.Println("Encoded Response:" , encodedResponse)
 	response, err := sp.ValidateEncodedResponse(encodedResponse)
+	fmt.Println("Response Struct:")
+	fmt.Printf("%+v\n", response)
 	if err != nil {
 		return nil, ErrVerification{Cause: err}
 	}
